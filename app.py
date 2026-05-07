@@ -59,14 +59,14 @@ def load_data():
         m  = pd.read_csv("data/processed/area_mapping.csv")
         return an, m
     except Exception as e:
-        st.error(f"⚠️ Error: {e}. Run analysis script first.")
+        st.error(f"Error: {e}. Run analysis script first.")
         return None, None
  
 df_jh, area_map = load_data()
  
 if df_jh is not None:
     st.sidebar.markdown('<p class="sidebar-title">⚙️ Navigation</p>', unsafe_allow_html=True)
-    sel_dist = st.sidebar.selectbox("🎯 Target District", sorted(df_jh['District'].unique()))
+    sel_dist = st.sidebar.selectbox("Target District", sorted(df_jh['District'].unique()))
  
     areas    = area_map[area_map['District'].str.upper() == sel_dist.upper()]['Area'].unique()
     sel_area = st.sidebar.selectbox("📍 Select Locality", sorted(areas) if len(areas) > 0 else ["Main Market"])
@@ -94,16 +94,16 @@ if df_jh is not None:
     with col1:
         other_biz = ""
         if rank2:
-            other_biz += f"<p style='color:#888; margin:4px 0;'>🥈 <b>{rank2}</b></p>"
+            other_biz += f"<p style='color:#888; margin:4px 0;'>2 <b>{rank2}</b></p>"
         if rank3:
-            other_biz += f"<p style='color:#888; margin:4px 0;'>🥉 <b>{rank3}</b></p>"
+            other_biz += f"<p style='color:#888; margin:4px 0;'>3 <b>{rank3}</b></p>"
  
         st.markdown(f"""
         <div class="rec-card">
-            <h1 style="color:#d4af37; margin:0; font-size:2.2rem;">💎 Recommendation: {rec}</h1>
+            <h1 style="color:#d4af37; margin:0; font-size:2.2rem;"> Recommendation: {rec}</h1>
             <p style="color:#aaa; margin:6px 0 0 0; font-size:0.95rem;">Zone Type: <b style="color:#d4af37">{atype}</b> &nbsp;|&nbsp; Locality: <b style="color:#fff">{sel_area}</b></p>
             <div class="reason-box">
-                <h4 style="color:#fff; margin-bottom:10px;">🚀 Why this business? (Data Insight)</h4>
+                <h4 style="color:#fff; margin-bottom:10px;"> Why this business? (Data Insight)</h4>
                 <p style="color:#bbb; line-height:1.6;">{reason}</p>
                 {'<hr style="border-color:#222;"><p style="color:#777; font-size:0.85rem; margin:4px 0;">Also consider:</p>' + other_biz if other_biz else ''}
                 <hr style="border-color:#333;">
@@ -112,7 +112,7 @@ if df_jh is not None:
         </div>
         """, unsafe_allow_html=True)
  
-        st.markdown("### 📊 Statistical Correlation Chart")
+        st.markdown("### Statistical Correlation Chart")
         chart_data = pd.DataFrame({
             "Market Factors": ["Talent Density", "Urban Ratio", "Labor Availability"],
             "Score": [s.get('Talent_Score', 0), s.get('Urban_Ratio', 0), s.get('Workforce_Availability', 0)]
@@ -120,7 +120,7 @@ if df_jh is not None:
         st.bar_chart(chart_data)
  
     with col2:
-        st.markdown(f"### 📍 Analysis: {sel_area}")
+        st.markdown(f"### Analysis: {sel_area}")
  
         t_score = s.get('Talent_Score', 0)
         st.write(f"**Education Standard (Graduates):** {t_score:.2f}%")
