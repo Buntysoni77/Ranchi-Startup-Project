@@ -1,16 +1,14 @@
-<img width="1895" height="886" alt="Screenshot 2026-05-07 161255" src="https://github.com/user-attachments/assets/0d1b1a7b-9d2a-4c01-ba22-731afa1c4eb6" />
-<img width="1901" height="892" alt="Screenshot 2026-05-07 161233" src="https://github.com/user-attachments/assets/7877ee64-0160-46ed-b50c-8b470db11238" />
-<img width="1510" height="892" alt="Screenshot 2026-05-07 161324" src="https://github.com/user-attachments/assets/e816b5af-f3db-4cb0-ab8b-5773400c53eb" />
-<img width="1900" height="881" alt="Screenshot 2026-05-07 161206" src="https://github.com/user-attachments/assets/0017f9e3-c347-4f8c-a212-60a41805a30e" />
-# 🏆 Jharkhand Scout — Business Intelligence Dashboard
+# Jharkhand Scout — Business Intelligence Dashboard
 
 > A data-driven startup recommendation engine for Jharkhand districts and localities, powered by India Census 2011 data.
 
-![Dashboard](https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1200)
-
+<img width="1901" height="892" alt="Screenshot 2026-05-07 161233" src="https://github.com/user-attachments/assets/7877ee64-0160-46ed-b50c-8b470db11238" />
+<img width="1510" height="892" alt="Screenshot 2026-05-07 161324" src="https://github.com/user-attachments/assets/e816b5af-f3db-4cb0-ab8b-5773400c53eb" />
+<img width="1900" height="881" alt="Screenshot 2026-05-07 161206" src="https://github.com/user-attachments/assets/0017f9e3-c347-4f8c-a212-60a41805a30e" />
+<img width="1895" height="886" alt="Screenshot 2026-05-07 161255" src="https://github.com/user-attachments/assets/0d1b1a7b-9d2a-4c01-ba22-731afa1c4eb6" />
 ---
 
-## 📌 What is this project?
+##  What is this project?
 
 **Jharkhand Scout** is a business analytics dashboard that helps entrepreneurs, investors, and policymakers identify the **best startup opportunities** in any area of Jharkhand — based on real census data, not guesswork.
 
@@ -18,7 +16,7 @@ Select a **District** → Select a **Locality** → Get a **data-backed business
 
 ---
 
-## 🎯 Problem it Solves
+##  Problem it Solves
 
 Most people starting a business ask:
 - *"What business should I start here?"*
@@ -29,7 +27,7 @@ This project answers all of that using **real government census data**.
 
 ---
 
-## 🗂️ Project Structure
+## Project Structure
 
 ```
 Ranchi_Startup_Project/
@@ -52,7 +50,7 @@ Ranchi_Startup_Project/
 
 ---
 
-## 🧠 How the Data Analysis Works
+##  How the Data Analysis Works
 
 ### Step 1 — Raw Data Source
 - **India Census 2011** (`india-districts-census-2011.csv`)
@@ -118,20 +116,20 @@ Area Recommendation = District Top5 ∩ Zone Preferred List
 - If Ranchi's top5 = [IT Training, Hostel, Gym, Restaurant, Pharmacy]
 - And Bariatu zone = Student
 - Student preferred = [Coaching, Hostel, Stationery, Cloud Kitchen]
-- **Match = Hostel / PG Accommodation** ✅
+- **Match = Hostel / PG Accommodation** 
 
 ---
 
-## 🏢 25 Business Ideas Covered
+##  25 Business Ideas Covered
 
 | Category | Businesses |
 |---|---|
-| 🎓 Education | Coaching Center, Hostel/PG, IT Training, Spoken English, Vocational School |
-| 🏥 Health | Pharmacy, Hospital, Gym, Mental Health Clinic, Diagnostic Lab, Ayurvedic Center |
-| 🍽️ Food | Restaurant, Cloud Kitchen, Chai Franchise, Organic Food Store |
-| 💰 Finance | FinTech Kiosk, Electronics Shop, Insurance Agency |
-| 🌾 Agriculture | Kisan Store, Cold Storage, Dairy Distribution, Solar Energy |
-| 🚚 Commerce | Logistics Hub, Stationery Shop, Real Estate Agency |
+| Education | Coaching Center, Hostel/PG, IT Training, Spoken English, Vocational School |
+| Health | Pharmacy, Hospital, Gym, Mental Health Clinic, Diagnostic Lab, Ayurvedic Center |
+| Food | Restaurant, Cloud Kitchen, Chai Franchise, Organic Food Store |
+| Finance | FinTech Kiosk, Electronics Shop, Insurance Agency |
+| Agriculture | Kisan Store, Cold Storage, Dairy Distribution, Solar Energy |
+| Commerce | Logistics Hub, Stationery Shop, Real Estate Agency |
 
 ---
 
@@ -147,7 +145,7 @@ Area Recommendation = District Top5 ∩ Zone Preferred List
 
 ---
 
-## 🚀 How to Run
+##  How to Run
 
 **1. Clone the repository**
 ```bash
@@ -178,7 +176,7 @@ streamlit run app.py
 
 ---
 
-## 📊 Output Files
+## Output Files
 
 | File | Description |
 |---|---|
@@ -188,40 +186,24 @@ streamlit run app.py
 
 ---
 
-## 🔍 Example Output
+##  Why This is a Real Data Analytics Project
 
-| District | Area | Zone | Recommendation |
-|---|---|---|---|
-| Ranchi | Bariatu | Student | Hostel / PG Accommodation |
-| Ranchi | Piska More | Rural | Digital Skill / IT Training |
-| Bokaro | Sector 4 | Commercial | Real Estate / Rental Agency |
-| Dhanbad | Jharia | Industrial | Logistics / Delivery Hub |
-| Gumla | Basia | Rural | Agri-Input / Kisan Store |
-
----
-
-## 📈 Why This is a Real Data Analytics Project
-
-- ✅ No hardcoded recommendations — everything derived from census numbers
-- ✅ Z-score normalisation for fair district comparison
-- ✅ Weighted multi-factor scoring per business type
-- ✅ Zone detection algorithm using 5 census features
-- ✅ Intersection logic for area-level precision
-- ✅ 100+ census columns processed into actionable insights
+- No hardcoded recommendations — everything derived from census numbers
+- Z-score normalisation for fair district comparison
+- Weighted multi-factor scoring per business type
+- Zone detection algorithm using 5 census features
+- Intersection logic for area-level precision
+- 100+ census columns processed into actionable insights
 
 ---
 
-## 👨‍💻 Author
+## Author
 
 **Bunty Soni**
 GitHub: [@Buntysoni77](https://github.com/Buntysoni77)
 
 ---
 
-## 📄 License
 
-MIT License — free to use and modify.
-
----
 
 <center><b>© 2026 JHARKHAND SCOUT | PROPELLING DIGITAL GROWTH IN THE HEARTLAND</b></center>
