@@ -1,3 +1,7 @@
+<img width="1895" height="886" alt="Screenshot 2026-05-07 161255" src="https://github.com/user-attachments/assets/0d1b1a7b-9d2a-4c01-ba22-731afa1c4eb6" />
+<img width="1901" height="892" alt="Screenshot 2026-05-07 161233" src="https://github.com/user-attachments/assets/7877ee64-0160-46ed-b50c-8b470db11238" />
+<img width="1510" height="892" alt="Screenshot 2026-05-07 161324" src="https://github.com/user-attachments/assets/e816b5af-f3db-4cb0-ab8b-5773400c53eb" />
+<img width="1900" height="881" alt="Screenshot 2026-05-07 161206" src="https://github.com/user-attachments/assets/0017f9e3-c347-4f8c-a212-60a41805a30e" />
 # 🏆 Jharkhand Scout — Business Intelligence Dashboard
 
 > A data-driven startup recommendation engine for Jharkhand districts and localities, powered by India Census 2011 data.
