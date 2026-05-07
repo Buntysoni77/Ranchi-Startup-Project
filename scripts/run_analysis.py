@@ -2,9 +2,9 @@ import pandas as pd
 import numpy as np
 import os
  
-# ── 25 Business Ideas mapped to Census Data Features ─────────────────────────
+ # --25 Business Ideas 
 BUSINESSES = {
-    # ── EDUCATION & SKILL ─────────────────────────────────────────────────────
+    # -- EDUCATION & SKILLS
     "Coaching / Tuition Center": {
         "features": {"Literacy_Rate": 0.4, "Youth_Ratio": 0.35, "Talent_Score": 0.25},
         "tag": "High youth + literacy = strong tuition demand."
@@ -26,7 +26,7 @@ BUSINESSES = {
         "tag": "Large non-worker youth = demand for job-ready skill training."
     },
  
-    # ── HEALTH & WELLNESS ─────────────────────────────────────────────────────
+    #--HEALTH & WELLNESS
     "Pharmacy / Medical Store": {
         "features": {"Population_Density": 0.4, "Elderly_Ratio": 0.35, "Urban_Ratio": 0.25},
         "tag": "Dense + aging population = high medicine demand."
@@ -52,7 +52,7 @@ BUSINESSES = {
         "tag": "Rural communities trust traditional medicine = steady clientele."
     },
  
-    # ── FOOD & BEVERAGE ───────────────────────────────────────────────────────
+    #--FOOD & BEVERAGE
     "Restaurant / Dhaba": {
         "features": {"Urban_Ratio": 0.35, "Mobile_Penetration": 0.3, "High_Income_Ratio": 0.35},
         "tag": "Urban + disposable income = dining out culture."
@@ -70,7 +70,7 @@ BUSINESSES = {
         "tag": "Farm produce surplus + aware consumers = farm-to-table opportunity."
     },
  
-    # ── FINANCE & TECH ────────────────────────────────────────────────────────
+    #--FINANCE & TECH
     "Micro-Finance / FinTech Kiosk": {
         "features": {"Mobile_Penetration": 0.4, "Rural_Ratio": 0.35, "Literacy_Rate": 0.25},
         "tag": "Mobile-literate rural households = digital banking gap."
@@ -84,7 +84,7 @@ BUSINESSES = {
         "tag": "Literate + income + aging = growing insurance awareness."
     },
  
-    # ── AGRICULTURE & RURAL ───────────────────────────────────────────────────
+    #--AGRICULTURE & RURAL
     "Agri-Input / Kisan Store": {
         "features": {"Agri_Worker_Ratio": 0.5, "Rural_Ratio": 0.3, "Workforce_Availability": 0.2},
         "tag": "Dominant farming community = seeds, tools, fertilizer demand."
@@ -98,7 +98,7 @@ BUSINESSES = {
         "tag": "Rural livestock households = raw milk supply chain opportunity."
     },
  
-    # ── COMMERCE & LOGISTICS ──────────────────────────────────────────────────
+    #--COMMERCE & LOGISTICS
     "Logistics / Delivery Hub": {
         "features": {"Urban_Ratio": 0.35, "Mobile_Penetration": 0.35, "High_Income_Ratio": 0.3},
         "tag": "E-commerce boom + urban buyers = last-mile delivery gap."
@@ -118,7 +118,7 @@ BUSINESSES = {
 }
  
 def run_analysis():
-    print("🧠 Running Business Recommendation Analysis...")
+    print("Running Business Recommendation Analysis...")
  
     df = pd.read_csv('india-districts-census-2011.csv')
     jh = df[df['State name'].str.upper() == 'JHARKHAND'].copy()
@@ -126,7 +126,7 @@ def run_analysis():
  
     H, P = jh['Households'], jh['Population']
  
-    # ── Feature Engineering ───────────────────────────────────────────────────
+    #--Feature Engineering
     jh['Literacy_Rate']          = jh['Literate'] / P * 100
     jh['Talent_Score']           = jh['Graduate_Education'] / jh['Literate'] * 100
     jh['Urban_Ratio']            = jh['Urban_Households'] / H * 100
@@ -142,16 +142,16 @@ def run_analysis():
     jh['Population_Density']     = P / P.max() * 100
     jh['Low_Sanitation']         = 100 - (jh['Having_latrine_facility_within_the_premises_Total_Households'] / H * 100)
  
-    # ── Z-score normalisation ─────────────────────────────────────────────────
+    #--Z-score normalisation
     FEATURES = list({f for b in BUSINESSES.values() for f in b['features']})
     for col in FEATURES:
         jh[f'Z_{col}'] = (jh[col] - jh[col].mean()) / (jh[col].std() or 1)
  
-    # ── Composite score per business ──────────────────────────────────────────
+    #--Composite score per business
     for biz, meta in BUSINESSES.items():
         jh[f'Score_{biz}'] = sum(w * jh[f'Z_{feat}'] for feat, w in meta['features'].items())
  
-    # ── Top-5 businesses per district ─────────────────────────────────────────
+    #--Top-5 businesses per district
     def top_businesses(row, n=5):
         scores = {b: row[f'Score_{b}'] for b in BUSINESSES}
         return [
@@ -164,7 +164,7 @@ def run_analysis():
     jh['Primary_Recommendation'] = jh['Top_Businesses'].apply(lambda x: x[0]['business'])
     jh['Primary_Reason']         = jh['Top_Businesses'].apply(lambda x: x[0]['reason'])
  
-    # ── Save outputs ──────────────────────────────────────────────────────────
+    #--Save outputs
     os.makedirs("data/processed", exist_ok=True)
     jh.to_csv("data/processed/jharkhand_analytics.csv", index=False)
  
@@ -204,7 +204,7 @@ def run_analysis():
     rows = [{"District": d, "Area": a} for d, areas in ALL_AREAS.items() for a in areas]
     pd.DataFrame(rows).to_csv("data/processed/area_mapping.csv", index=False)
  
-    print("✅ Done!")
+    print("Done!")
     print(jh[['District','Primary_Recommendation']].to_string(index=False))
  
 if __name__ == "__main__":
